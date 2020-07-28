@@ -16,21 +16,22 @@ export default class HomeScreen extends Component {
   }
 
   moveToNextScreen() {
-    this.props.navigation.navigate('Profile');
     this.props.navigation.navigate('Profile', {name: this.state.value});
   }
 
   render() {
     return (
       <View style={styles.root}>
-        <Text style={styles.title}>
-          Your current value = {this.state.value}
-        </Text>
+        <Text style={styles.title}>Your final Value from redux</Text>
+        <Text style={styles.title}>{this.props.data}</Text>
+        <Text style={styles.title}>Your final Value from Navigation</Text>
+        <Text style={styles.title}>{this.state.value}</Text>
         <TextInput
           style={styles.input}
           value={this.state.value}
           onChangeText={(value) => {
             this.setState({value: value});
+            this.props.updateData(this.state.value)
           }}
         />
 
@@ -48,9 +49,9 @@ export default class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 24,
+    fontSize: 18,
     color: '#000',
-    marginTop: 100,
+    marginTop: 20,
   },
   button: {
     fontSize: 16,
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '90%',
-    marginTop: 100,
+    marginTop: 20,
     paddingLeft: 10,
     paddingRight: 10,
     backgroundColor: '#d9dbdd',

@@ -1,20 +1,24 @@
-import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from './HomeScreen';
-import ProfileScreen from './ProfileScreen';
 
-const Stack = createStackNavigator();
+import React, {Component} from 'react';
+import {StyleSheet, View} from 'react-native';
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+import {Provider} from 'react-redux';
+import Store from './Store';
+import Navigator from './src/Navigator'
+
+const {store} = Store();
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <Navigator />
+      </Provider>
+    );
+  }
 }
 
-export default App;
+const localStyles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

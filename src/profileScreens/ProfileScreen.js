@@ -5,7 +5,7 @@ export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Hello',
+      value: '',
     };
   }
 
@@ -16,7 +16,10 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.root}>
-        <Text style={styles.title}>Your final value = {this.state.value}</Text>
+        <Text style={styles.title}>Your final Value from redux</Text>
+        <Text style={styles.title}>{this.props.data}</Text>
+        <Text style={styles.title}>Your final Value from Navigation</Text>
+        <Text style={styles.title}>{this.state.value}</Text>
       </View>
     );
   }
@@ -24,9 +27,9 @@ export default class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 24,
+    fontSize: 18,
     color: '#000',
-    marginTop: 100,
+    marginTop: 50,
   },
   root: {
     alignItems: 'center',
